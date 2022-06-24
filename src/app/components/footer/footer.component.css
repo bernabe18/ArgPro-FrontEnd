@@ -1,0 +1,10 @@
+.row{
+    background: rgb(8, 31, 68);
+    color: rgb(87, 182, 245);
+    align-items: center;
+}
+footer{
+    padding-top: 45px;
+    text-align: center;
+}
+

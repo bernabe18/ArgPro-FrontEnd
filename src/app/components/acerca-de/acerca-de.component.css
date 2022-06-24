@@ -1,0 +1,40 @@
+.row{
+    padding: 20px;
+    color: rgb(87, 182, 245);
+    background: rgb(5, 18, 39);
+}
+
+div{
+    background: rgb(5, 18, 39);
+    text-align: center;
+}
+
+
+#nombre{
+    font-weight: bold;
+    margin-top: 10%;
+}
+@media(min-width: 576px){
+#foto-perfil{
+position:absolute;
+width: 15%;
+left: 3%;
+top: 600px;
+
+border-radius: 100%;
+box-shadow: 3px 3px 3px rgb(87, 182, 245);;
+
+}
+}
+@media(max-width: 575px){
+    #foto-perfil{
+    position: absolute;
+    width: 15%;
+    left: 42%;
+    top: 620px;
+
+    border-radius: 100%;
+    box-shadow: 3px 3px 3px rgb(87, 182, 245);
+    }
+    }
+
