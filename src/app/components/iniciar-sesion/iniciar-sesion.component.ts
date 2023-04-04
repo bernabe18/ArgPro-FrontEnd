@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder,FormGroup,Validators } from '@angular/forms';
+import { LoginUsuario } from './../model/login-usuario';
+import { TokenService } from './../../service/token.service';
+import { AuthService } from 'src/app/service/auth.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-iniciar-sesion',
@@ -7,27 +11,46 @@ import { FormBuilder,FormGroup,Validators } from '@angular/forms';
   styleUrls: ['./iniciar-sesion.component.css']
 })
 export class IniciarSesionComponent implements OnInit {
-form:FormGroup;
-  constructor( private formBuilder:FormBuilder) {
-    this.form=this.formBuilder.group({
-        email:['',[Validators.required,Validators.email]],
-        password:['',[Validators.required,Validators.minLength(8)]],
-        InputDeviceInfo:this.formBuilder.group({
-        deviceId:["15865141968"],
-        deviceType:["DEVICE_TYPE_ANDROID"],
-        notificationToken:["154897635eecccecc34"]
-      })
-    });
+
+  isLogged=false;
+  isLogginFail=false;
+  loginUsuario!:LoginUsuario;
+  nombreUsuario!:string;
+  password!:string;
+  roles:string[]=[];
+  errMsj!:string;
+
+
+  constructor(private tokenService:TokenService ,private authSrvice:AuthService,private router:Router){
+
   }
 
   ngOnInit(): void {
+    if(this.tokenService.getToken()){
+      this.isLogged=true;
+      this.isLogginFail=false;
+      this.roles=this.tokenService.getAuthorities();
+    }
   }
 
-  get Email(){
-    return this.form.get('email');
+  onLogin():void{
+    this.loginUsuario = new LoginUsuario(this.nombreUsuario,this.password);
+
+        this.authSrvice.login(this.loginUsuario).subscribe(data => {
+        this.isLogged=true;
+        this.isLogginFail=false;
+        this.tokenService.setToken(data.token);
+        this.tokenService.setUsername(data.nombreUsuario);
+        this.tokenService.setAthorities(data.authorities);
+        this.roles = data.authorities;
+        this.router.navigate(['porfolio']);
+      },err=>{
+        this.isLogged=false;
+        this.isLogginFail=true;
+        this.errMsj=err.error.mensaje;
+        console.log(this.errMsj);
+        console.log("error en onlogin")
+      });
   }
 
-  get Password(){
-    return this.form.get('password');
-  }
 }

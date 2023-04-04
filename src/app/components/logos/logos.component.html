@@ -1,1 +1,16 @@
-<img id="logoarge" src="../../../assets/img/APLogo.png" alt="Argentina Programa" >
+<div class="row">
+    <div class="container">
+        <img class="logo" src="../../../assets/img/APLogo.png" alt="Argentina Programa">
+        <div class="redes1">
+            <button id="boton" type="button" class="btn btn-outline-light" (click)="onLogout()"
+                *ngIf="isLogged">Salir</button>
+            <button id="boton" type="button" class="btn btn-outline-light" (click)="login()"
+                *ngIf="!isLogged">INGRESAR</button>
+            <a href=""><img class="redes2" src="../../../assets/img/facebook.png" alt="facebook"></a>
+            <a href=""><img class="redes2" src="../../../assets/img/github.png" alt="github"></a>
+            <a href=""><img class="redes2" src="../../../assets/img/instagram.png" alt="instagram"></a>
+            <a href=""> <img class="redes2" src="../../../assets/img/linkedin.png" alt="linkedin"></a>
+            <a href=""> <img class="redes2" src="../../../assets/img/twitter.png" alt="twitter"></a>
+        </div>
+    </div>
+</div>

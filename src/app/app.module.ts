@@ -13,7 +13,6 @@ import { ExperienciaComponent } from './components/experiencia/experiencia.compo
 import { EducacionComponent } from './components/educacion/educacion.component';
 import { ProyectosComponent } from './components/proyectos/proyectos.component';
 import { LogosComponent } from './components/logos/logos.component';
-import { SocialesComponent } from './components/sociales/sociales.component';
 import { BannerComponent } from './components/banner/banner.component';
 import { AcercaDeComponent } from './components/acerca-de/acerca-de.component';
 import { SkillsComponent } from './components/skills/skills.component';
@@ -21,6 +20,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { IniciarSesionComponent } from './components/iniciar-sesion/iniciar-sesion.component';
 import { PorfolioComponent } from './components/porfolio/porfolio.component';
 import { HomeComponent } from './components/home/home.component';
+import { InterceptorService } from './components/model/interceptor-service';
+import { NewExperienciaComponent } from './components/experiencia/new-experiencia.component';
 
 
 @NgModule({
@@ -31,7 +32,6 @@ import { HomeComponent } from './components/home/home.component';
     EducacionComponent,
     ProyectosComponent,
     LogosComponent,
-    SocialesComponent,
     BannerComponent,
     AcercaDeComponent,
     SkillsComponent,
@@ -39,6 +39,7 @@ import { HomeComponent } from './components/home/home.component';
     IniciarSesionComponent,
     PorfolioComponent,
     HomeComponent,
+    NewExperienciaComponent,
 
   ],
   imports: [
@@ -50,7 +51,7 @@ import { HomeComponent } from './components/home/home.component';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [InterceptorService],
   bootstrap: [AppComponent]
 })
 
